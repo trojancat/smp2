@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+- 2.1.2
+env:
+- DB=postgresql
+script:
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake
+before_script:
+- cp config/database.yml.sample config/database.yml
+- psql -c 'create database spm_test' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: NCcfz+4vvF4WgiftZFWoI7EnZGJ7It+CxXFRmN4oRdjPLVXID1Dr9E7rP0qA5uVb14xZezu3mEydEIG6xve2sYApljRPo3p84E21JkYzJa52A+bs6hnSCpKTjlkEbh3LfJ2o/3rQIXOK/eRKHyMYTriEZOBFp5H018jTa7QI+r0=
+  app: blooming-coast-8132
+  on:
+    repo: trojancat/smp2
+    branch: dev
+  run: "rake db:migrate"
