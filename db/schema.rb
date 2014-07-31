@@ -11,10 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731130920) do
+ActiveRecord::Schema.define(version: 20140731135307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meeting_entries", force: true do |t|
+    t.text     "message"
+    t.integer  "owner_id"
+    t.integer  "meeting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetings", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "status"
+    t.integer  "owner_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetings_users", force: true do |t|
+    t.integer "meeting_id"
+    t.integer "user_id"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "status"
+    t.integer  "sender_id"
+    t.integer  "acceptor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "owner_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "status"
+    t.integer  "owner_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

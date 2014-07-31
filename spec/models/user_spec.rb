@@ -1,5 +1,12 @@
-require 'rails_helper'
+#require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  before(:each) do
+    @u = FactoryGirl.build(:user)
+  end
+
+  it "has a valid factory" do
+    expect(@u).to be_valid
+  end
 end
