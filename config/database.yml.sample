@@ -1,0 +1,17 @@
+local: &local
+  adapter: postgresql
+  user: postgres
+  password:
+  host: localhost
+
+development:
+  <<: *local
+  database: spm_development
+
+test:
+  <<: *local
+  database: spm_test
+
+production:
+  <<: *local
+  database: spm_production
