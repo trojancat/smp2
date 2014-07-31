@@ -2,8 +2,11 @@
 
 FactoryGirl.define do
   factory :task do
-    title "MyString"
-    description "MyText"
-    status 1
+    title { Faker::Lorem.characters(rand(4..30)) }
+    description { Faker::Lorem.paragraph }
+    status  1
+
+    association :project, factory: :project
+    association :owner, factory: :user
   end
 end

@@ -1,5 +1,11 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Task, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Task do
+  before(:each) do
+    @t = FactoryGirl.build(:task)
+  end
+
+  it "has a valid factory" do
+    expect(@t).to be_valid
+  end
 end
