@@ -1,0 +1,19 @@
+<h2>Вход в приложение</h2>
+
+<%= simple_form_for resource, as: resource_name, url: session_path(resource_name),
+                    wrapper_mappings: {
+                            check_boxes: :vertical_radio_and_checkboxes,
+                            radio_buttons: :vertical_radio_and_checkboxes,
+                            boolean: :vertical_boolean,
+                    } do |f| %>
+
+        <%= f.error_notification %>
+
+        <%= f.input :email, label: 'E-mail', required: false, autofocus: true %>
+        <%= f.input :password, label: 'Пароль', required: false %>
+        <%= f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable? %>
+
+        <%= f.button :submit, "Войти", class: 'btn btn-primary' %>
+<% end %>
+
+<%= render "devise/shared/links" %>

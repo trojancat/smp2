@@ -1,28 +1,30 @@
-== README
+== SimplePM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Учебный проект для прохождения курсов RubyBursa.
+Простой менеджер проектов для совместной работы сотрудников компании.
 
-Things you may want to cover:
+== Проект на Heroku
+http://blooming-coast-8132.herokuapp.com/
 
-* Ruby version
+== Функционал
 
-* System dependencies
+Готовый функционал:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Отсутсвует
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Планируемый функционал:
+
+* Назначенные задания
+* Рабочий календарь
+* Коллективные обсуждения
+* Внутренняя почта
+
+== Установка
+
+ comming soon.. :)
+
+
+== Лицензия
+
+Исходный код, макеты дизайна и вёрстка распространяются по лицензии BSD.
