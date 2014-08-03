@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  # Защита от CSRF атак
   protect_from_forgery with: :exception
-  # Требуется обязательная аутентифиция пользователя для доступа к любому контролеру
-  before_action :authenticate_user!
+
+  # Фильтры
+  before_action :authenticate_user!                                       # Требуется обязательная аутентифиция
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+  protected
+
+  # Разрешенные параметры для регистрации пользователя
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:role, :name, :email, :password, :password_confirmation) }
+  end
 end
