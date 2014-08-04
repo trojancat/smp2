@@ -43,7 +43,7 @@ describe ProjectsController do
 
         it 'assigns the requested project to subject' do
           get :show, id: subject
-          expect(assigns(:projects)).to eq([subject])
+          expect(assigns(:projects)).to eq(subject)
         end
       end
 
