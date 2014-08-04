@@ -51,9 +51,9 @@ describe ProjectsController do
         expect(response).to render_template :new
       end
 
-      it 'assigns the requested project to new record' do
+      it 'assigns the requested project to new project' do
         get :new
-        expect(assigns(:projects)).to be_new_record
+        expect(assigns(:project)).to be_new_record
       end
     end
 
