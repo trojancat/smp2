@@ -1,54 +1,36 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe ProjectsController, :type => :controller do
+describe ProjectsController do
 
-  describe "GET index" do
-    it "returns http success" do
-      get :index
-      expect(response).to be_success
+  describe 'index action' do
+
+    # Не авторизованный пользователь
+    context 'when user not logged in' do
+      describe 'GET #index' do
+        it 'redirects to login page' do
+          get :index
+          expect(response).to redirect_to new_user_session_path
+        end
+      end
     end
-  end
 
-  describe "GET show" do
-    it "returns http success" do
-      get :show
-      expect(response).to be_success
-    end
-  end
+    # Авторизованный пользователь
+    context 'when user logged in' do
+      let(:user) { FactoryGirl.create(:user) }
+      #subject { FactoryGirl.create(:project, owner: user) }
 
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to be_success
-    end
-  end
+      before do
+        sign_in user
+      end
 
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to be_success
+      describe 'GET #index' do
+        it 'render :index view' do
+          get :index
+          expect(response).to render_template :index
+        end
+      end
     end
-  end
 
-  describe "GET edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to be_success
-    end
   end
 
 end

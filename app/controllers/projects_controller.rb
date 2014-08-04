@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # Список проектов
   def index
-    @projects = Project.includes(:owner).paginate(:page => params[:page]).order('created_at DESC')
+    @projects = Project.includes(:owner).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
   end
 
   # Страница проекта
