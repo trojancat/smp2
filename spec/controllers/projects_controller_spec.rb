@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe SiteController do
+describe ProjectsController do
 
   describe 'index action' do
 
+    # Не авторизованный пользователь
     context 'when user not logged in' do
       describe 'GET #index' do
         it 'redirects to login page' do
@@ -13,9 +14,10 @@ describe SiteController do
       end
     end
 
+    # Авторизованный пользователь
     context 'when user logged in' do
       let(:user) { FactoryGirl.create(:user) }
-      #subject { FactoryGirl.create(:project, owner: user) }
+      subject { FactoryGirl.create(:project, owner: user) }
 
       before do
         sign_in user
@@ -25,6 +27,11 @@ describe SiteController do
         it 'render :index view' do
           get :index
           expect(response).to render_template :index
+        end
+
+        it 'assigns the requested project to subject' do
+          get :index
+          expect(assigns(:projects)).to eq([subject])
         end
       end
     end

@@ -1,0 +1,5 @@
+= simple_form_for @project do |f|
+  = f.input :title, label: 'Наименование'
+  = f.input :description, label: 'Описание'
+  = f.input :status, label: 'Статус'
+  = f.button :submit, value: 'Отправить', class: 'btn btn-primary'

@@ -1,0 +1,25 @@
+h1 Проекты
+
+table.table.table-condensed
+  thead
+    tr
+      th Наименование
+      th Проект-менеджер
+      th Статус
+      th Создан
+      th &nbsp;
+  tbody
+    - @projects.each do |p|
+      tr
+        td = link_to p.title, project_path(p)
+        td = p.owner.name
+        td = p.status
+        td = p.created_at
+        td.span2
+          =link_to "Изменить", edit_project_path(p)
+          ||
+          =link_to "Удалить", project_path(p), method: :delete, data: { confirm: 'Уверены?' }
+
+= link_to 'Новый проект', new_project_path, class: 'btn btn-success'
+
+= will_paginate @projects, renderer: BootstrapPagination::Rails
