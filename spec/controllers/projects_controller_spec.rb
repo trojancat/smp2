@@ -17,7 +17,7 @@ describe ProjectsController do
     # Авторизованный пользователь
     context 'when user logged in' do
       let(:user) { FactoryGirl.create(:user) }
-      #subject { FactoryGirl.create(:project, owner: user) }
+      subject { FactoryGirl.create(:project, owner: user) }
 
       before do
         sign_in user
@@ -27,6 +27,11 @@ describe ProjectsController do
         it 'render :index view' do
           get :index
           expect(response).to render_template :index
+        end
+
+        it 'assigns the requested project to subject' do
+          get :index
+          expect(assigns(:projects)).to eq([subject])
         end
       end
     end
