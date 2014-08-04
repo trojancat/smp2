@@ -1,27 +1,27 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Мой профиль</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, label: 'E-mail', required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <p>E-mail: <%= resource.unconfirmed_email %> не подтвержден!</p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <%= f.input :name, label: 'ФИО', required: true %>
+    <%= f.input :current_password, label: 'Текущий пароль', hint: "Укажите текущий пароль, чтобы подтвердить изменения", required: true %>
+
+    <a href="#" data-toggle="collapse" data-target="#change-password">Сменить пароль</a>
+    <div id="change-password" class="collapse out">
+      <%= f.input :password, label: 'Новый пароль', hint: 'Оставьте пустым, если не собираетесь его менять!', autocomplete: "off", required: false %>
+      <%= f.input :password_confirmation, label: 'Подтверждение нового пароля', required: false %>
+    </div>
+    <%= link_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Изменить данные", class: 'btn btn-primary' %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
