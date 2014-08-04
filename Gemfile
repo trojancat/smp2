@@ -17,6 +17,7 @@ gem 'state_machine'
 gem 'carrierwave'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
+gem 'will_paginate', '~> 3.0'
 
 group :production do
   gem 'rails_12factor'

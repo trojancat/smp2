@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, :type => :controller do
+RSpec.describe ProjectsController, :type => :controller do
 
   describe "GET index" do
     it "returns http success" do
@@ -16,6 +16,20 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
+  describe "GET new" do
+    it "returns http success" do
+      get :new
+      expect(response).to be_success
+    end
+  end
+
+  describe "GET create" do
+    it "returns http success" do
+      get :create
+      expect(response).to be_success
+    end
+  end
+
   describe "GET edit" do
     it "returns http success" do
       get :edit
@@ -23,9 +37,16 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  describe "GET delete" do
+  describe "GET update" do
     it "returns http success" do
-      get :delete
+      get :update
+      expect(response).to be_success
+    end
+  end
+
+  describe "GET destroy" do
+    it "returns http success" do
+      get :destroy
       expect(response).to be_success
     end
   end

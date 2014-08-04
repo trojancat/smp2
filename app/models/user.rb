@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
 
-  # Константы
   TECH_DIR = 1  #Технический директор
   PM = 2        #Проект менеджер
   MEMBER = 3    #Рядовой сотрудник

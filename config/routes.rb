@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, except: [:new, :create]
+  resources :projects
 
-  root 'site#index'
+  root 'projects#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
