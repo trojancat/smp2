@@ -41,7 +41,7 @@ describe ProjectsController do
 
       it 'assigns the requested project to subject' do
         get :show, id: subject
-        expect(assigns(:projects)).to eq(subject)
+        expect(assigns(:project)).to eq(subject)
       end
     end
 
@@ -80,7 +80,7 @@ describe ProjectsController do
 
       it 'assigns the requested project to subject' do
         get :edit, id: subject
-        expect(assigns(:projects)).to eq(subject)
+        expect(assigns(:project)).to eq(subject)
       end
     end
 
