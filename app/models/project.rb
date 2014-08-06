@@ -11,15 +11,16 @@ class Project < ActiveRecord::Base
   # Статусы
   extend Enumerize
   enumerize :status, in: {
-      'Открыт' => self::OPENED,
-      'Закрыт' => self::CLOSED,
+      'открыт' => self::OPENED,
+      'закрыт' => self::CLOSED,
   }
 
   # Валидация
   validates :title, presence: true, length: { maximum: 255 }
   validates :owner, presence: true
   #validates :status,  presence: true, inclusion: { in: [self::OPENED, self::CLOSED] }
-  validates :status,  presence: true, inclusion: { in: [1, 2] }
+  #validates :status,  presence: true, inclusion: { in: [1, 2] }
+  validates :status,  presence: true, inclusion: { in: %w(открыт закрыт) }
 
   scope :page_by_page, ->(page) { includes(:owner).paginate(:page => page, :per_page => self::PER_PAGE).order('created_at DESC') }
 end
