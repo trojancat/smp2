@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # Список проектов
   def index
-    @projects = Project.includes(:owner).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @projects = Project.page_by_page(params[:page])
   end
 
   # Страница проекта
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Ищзменить проект
+  # Изменить проект
   def edit
   end
 
