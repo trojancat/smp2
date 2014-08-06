@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :project do
     title { Faker::Lorem.characters(rand(4..30)) }
     description { Faker::Lorem.paragraph }
-    status 1
+    status 'открыт'
 
     association :owner, factory: :user
   end
