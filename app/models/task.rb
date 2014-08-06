@@ -1,16 +1,13 @@
 class Task < ActiveRecord::Base
 
-  OPENED = 1    #Открыт
-  CLOSED = 2    #Закрыт
-
   belongs_to :project
   belongs_to :owner, class_name: User
 
   # Статусы
   extend Enumerize
   enumerize :status, in: {
-      'открыта' => self::OPENED,
-      'закрыта' => self::CLOSED,
+      'открыта' => 1,
+      'закрыта' => 2,
   }
 
   # Валидация

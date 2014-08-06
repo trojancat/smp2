@@ -1,8 +1,5 @@
 class Meeting < ActiveRecord::Base
 
-  OPENED = 1    #Открыт
-  CLOSED = 2    #Закрыт
-
   belongs_to              :owner, class_name: User
   belongs_to              :project
   has_and_belongs_to_many :users
@@ -10,8 +7,8 @@ class Meeting < ActiveRecord::Base
   # Статусы
   extend Enumerize
   enumerize :status, in: {
-      'открыт' => self::OPENED,
-      'закрыт' => self::CLOSED,
+      'открыт' => 1,
+      'закрыт' => 2,
   }
 
   # Валидация
