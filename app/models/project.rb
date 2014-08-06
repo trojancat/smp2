@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
 
   # Валидация
   validates :title, presence: true, length: { maximum: 255 }
-  #validates :owner, presence: true
+  validates :owner, presence: true
   #validates :status,  presence: true, inclusion: { in: [self::OPENED, self::CLOSED] }
   #validates :status,  presence: true, inclusion: { in: [1, 2] }
 
