@@ -1,0 +1,12 @@
+h2
+  | Регистрация нового пользователя
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, label: 'ФИО', required: true, autofocus: true
+    = f.input :email, label: 'E-mail', required: true
+    = f.input :password, label: 'Пароль', required: true
+    = f.input :password_confirmation, label: 'Подтверждение пароля', required: true
+  .form-actions
+    = f.button :submit, "Отправить", class: 'btn btn-primary'
+= render "devise/shared/links"
