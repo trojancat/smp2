@@ -4,7 +4,11 @@
 Простой менеджер проектов для совместной работы сотрудников компании.
 
 == Проект на Heroku
-http://blooming-coast-8132.herokuapp.com/
+http://blooming-coast-8132.herokuapp.com
+
+Тестовые данные для входа под админом:
+    Логин: VasyaPupkin@gmail.com
+    Пароль: veryhardpassword123
 
 == Функционал
 

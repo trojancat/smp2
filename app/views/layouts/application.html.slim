@@ -32,11 +32,11 @@ html lang="ru"
           .container-fluid.nav-collapse
             ul.nav
               li= link_to "Проекты", projects_path
-              li= link_to "Задачи", "/path2"
-              li= link_to "Совещания", "/path3"
+              li= link_to "Задачи", "#tasks"
+              li= link_to "Совещания", "#meetings"
             - if current_user
-            ul.nav.pull-right
-              li= link_to "Выйти", destroy_user_session_path, method: 'DELETE'
+              ul.nav.pull-right
+                li= link_to "Выйти", destroy_user_session_path, method: 'DELETE'
 
     .container-fluid
 
@@ -45,8 +45,8 @@ html lang="ru"
           .well.sidebar-nav
             ul.nav.nav-list
               li.nav-header Меню пользователя
-              li= link_to "Пользователи", '/path'
-              li= link_to "Сообщения", '/path4'
+              li= link_to "Пользователи", '#users'
+              li= link_to "Сообщения", '#messages'
               li= link_to "Профиль", edit_user_registration_path
         .span9
           = bootstrap_flash
