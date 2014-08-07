@@ -57,22 +57,22 @@ describe MeetingsController do
         expect(assigns(:meeting)).to be_new_record
       end
     end
-=begin
+
     describe 'POST #create' do
       context 'with valid attributes' do
         it 'create new object' do
           expect{
-            post :create, project: FactoryGirl.attributes_for(:project)
-          }.to change(Project, :count).by(1)
+            post :create, meeting: FactoryGirl.attributes_for(:meeting)
+          }.to change(Meeting, :count).by(1)
         end
 
         it 'redirects to index path' do
-          post :create, project: FactoryGirl.attributes_for(:project)
-          expect(response).to redirect_to projects_path
+          post :create, meeting: FactoryGirl.attributes_for(:meeting)
+          expect(response).to redirect_to meetings_path
         end
       end
     end
-
+=begin
     describe 'GET #edit' do
       it 'renders :edit view' do
         get :edit, id: subject
