@@ -84,22 +84,22 @@ describe MeetingsController do
         expect(assigns(:meeting)).to eq(subject)
       end
     end
-=begin
+
     describe 'PATCH #update' do
       context 'with valid attributes' do
         it 'updates object' do
           expect{
-            post :update, id: subject, project: { title: 'new_project' }
-          }.to change{ subject.reload.title }.to('new_project')
+            post :update, id: subject, meeting: { title: 'new_meeting' }
+          }.to change{ subject.reload.title }.to('new_meeting')
         end
 
         it 'redirects to index path' do
-          post :update, id: subject, project: { title: 'new_project' }
-          expect(response).to redirect_to project_path(subject)
+          post :update, id: subject, meeting: { title: 'new_meeting' }
+          expect(response).to redirect_to meeting_path(subject)
         end
       end
     end
-
+=begin
     describe 'DELETE #destroy' do
       before(:each) { @project = FactoryGirl.create :project, owner: user }
 
