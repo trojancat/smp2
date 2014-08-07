@@ -72,19 +72,19 @@ describe MeetingsController do
         end
       end
     end
-=begin
+
     describe 'GET #edit' do
       it 'renders :edit view' do
         get :edit, id: subject
         expect(response).to render_template :edit
       end
 
-      it 'assigns the requested project to subject' do
+      it 'assigns the requested meeting to subject' do
         get :edit, id: subject
-        expect(assigns(:project)).to eq(subject)
+        expect(assigns(:meeting)).to eq(subject)
       end
     end
-
+=begin
     describe 'PATCH #update' do
       context 'with valid attributes' do
         it 'updates object' do
