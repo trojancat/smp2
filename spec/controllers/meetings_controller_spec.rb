@@ -11,11 +11,12 @@ describe MeetingsController do
       end
     end
   end
-=begin
+
   # Авторизованный пользователь
   context 'when user logged in' do
     let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:project, owner: user) }
+    let(:project) { FactoryGirl.create(:project) }
+    subject { FactoryGirl.create(:meeting, owner: user, project: project) }
 
     before do
       sign_in user
@@ -27,12 +28,12 @@ describe MeetingsController do
         expect(response).to render_template :index
       end
 
-      it 'assigns the requested project to subject' do
+      it 'assigns the requested meeting to subject' do
         get :index
-        expect(assigns(:projects)).to eq([subject])
+        expect(assigns(:meetings)).to eq([subject])
       end
     end
-
+=begin
     describe 'GET #show' do
       it 'renders :show view' do
         get :show, id: subject
@@ -113,7 +114,7 @@ describe MeetingsController do
         expect(response).to redirect_to projects_path
       end
     end
-
-  end
 =end
+  end
+
 end
