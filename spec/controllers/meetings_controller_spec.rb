@@ -99,22 +99,22 @@ describe MeetingsController do
         end
       end
     end
-=begin
+
     describe 'DELETE #destroy' do
-      before(:each) { @project = FactoryGirl.create :project, owner: user }
+      before(:each) { @meeting = FactoryGirl.create :meeting, owner: user, project: project }
 
       it 'deletes the object' do
         expect{
-          delete :destroy, id: @project
-        }.to change(Project, :count).by(-1)
+          delete :destroy, id: @meeting
+        }.to change(Meeting, :count).by(-1)
       end
 
       it 'redirects to index path' do
-        delete :destroy, id: @project
-        expect(response).to redirect_to projects_path
+        delete :destroy, id: @meeting
+        expect(response).to redirect_to meetings_path
       end
     end
-=end
+
   end
 
 end
