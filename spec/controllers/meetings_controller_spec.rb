@@ -33,19 +33,19 @@ describe MeetingsController do
         expect(assigns(:meetings)).to eq([subject])
       end
     end
-=begin
+
     describe 'GET #show' do
       it 'renders :show view' do
         get :show, id: subject
         expect(response).to render_template :show
       end
 
-      it 'assigns the requested project to subject' do
+      it 'assigns the requested meeting to subject' do
         get :show, id: subject
-        expect(assigns(:project)).to eq(subject)
+        expect(assigns(:meeting)).to eq(subject)
       end
     end
-
+=begin
     describe 'GET #new' do
       it 'renders :new view' do
         get :new
