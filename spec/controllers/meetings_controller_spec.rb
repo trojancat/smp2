@@ -45,19 +45,19 @@ describe MeetingsController do
         expect(assigns(:meeting)).to eq(subject)
       end
     end
-=begin
+
     describe 'GET #new' do
       it 'renders :new view' do
         get :new
         expect(response).to render_template :new
       end
 
-      it 'assigns the requested project to new project' do
+      it 'assigns the requested meeting to new meeting' do
         get :new
-        expect(assigns(:project)).to be_new_record
+        expect(assigns(:meeting)).to be_new_record
       end
     end
-
+=begin
     describe 'POST #create' do
       context 'with valid attributes' do
         it 'create new object' do
