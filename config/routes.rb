@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :meetings
   resources :projects
 
   root 'projects#index'

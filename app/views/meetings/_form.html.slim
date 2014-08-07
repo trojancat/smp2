@@ -1,0 +1,7 @@
+= simple_form_for @meeting do |f|
+  = f.association :project, label: 'Проект', include_blank: false
+  = f.input :title, label: 'Тема'
+  = f.input :description, label: 'Описание'
+  = f.input :status, label: 'Статус', include_blank: false
+  = link_to 'Отмена', meetings_path, class: 'btn'
+  = f.button :submit, value: 'Сохранить', class: 'btn btn-primary'
