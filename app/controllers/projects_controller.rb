@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource param_method: :project_params
+
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   # Список проектов
@@ -45,10 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-  def find_project
-    @project = Project.find(params[:id])
-  end
 
   def project_params
     params.require(:project).permit(:title, :description, :status)
