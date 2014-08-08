@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :meetings
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 
   root 'projects#index'
 
