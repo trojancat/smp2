@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource param_method: :project_params
 
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
-
   # Список проектов
   def index
     @projects = Project.page_by_page(params[:page])
