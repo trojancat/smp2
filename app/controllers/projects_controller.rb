@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  load_and_authorize_resource param_method: :project_params
+  load_resource param_method: :project_params
 
   # Список проектов
   def index
