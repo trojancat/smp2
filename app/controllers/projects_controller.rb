@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  load_resource param_method: :project_params
+  #load_resource param_method: :project_params
+  load_resource :project
 
   # Список проектов
   def index
