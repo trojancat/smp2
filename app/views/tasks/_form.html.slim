@@ -1,0 +1,7 @@
+= simple_form_for @task do |f|
+  = f.association :owner, label: 'Исполнитель', include_blank: false
+  = f.input :title, label: 'Наименование'
+  = f.input :description, label: 'Описание'
+  = f.input :status, label: 'Статус', include_blank: false
+  = link_to 'Отмена', project_tasks_path(@project), class: 'btn'
+  = f.button :submit, value: 'Сохранить', class: 'btn btn-primary'

@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   load_resource :task, through: :project
 
   def index
+    @tasks = Task.page_by_page(params[:page])
   end
 
   def show
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = @project.tasks.new(task_params)
     if @task.save
       redirect_to project_tasks_path(@project)
     else
