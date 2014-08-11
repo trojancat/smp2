@@ -3,6 +3,6 @@ h2 Описание:
 = @project.description
 p = 'Статус: ' + @project.status
 p
-  = link_to 'Задачи', project_tasks_path(@project), class: 'btn btn-success'
+  = link_to 'Задачи [ ' + @project.tasks.count.to_s + ' ]', project_tasks_path(@project), class: 'btn btn-success'
 p
   = link_to 'К списку проектов', projects_path, class: 'btn btn-info'

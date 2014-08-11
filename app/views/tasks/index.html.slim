@@ -1,5 +1,5 @@
 h1 Задачи по проекту
-/ = @project.title
+= link_to @project.title, @project
 .row
   .col-lg-offset-11
     = link_to 'Новая задача', new_project_task_path(@project), class: 'btn btn-success'
@@ -15,7 +15,7 @@ h1 Задачи по проекту
     tbody
       - @tasks.each do |t|
         tr
-          td = link_to t.title, project_task_path(@project)
+          td = link_to t.title, project_task_path(@project, t)
           td = t.owner.name
           td = t.status
           td = t.created_at

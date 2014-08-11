@@ -25,9 +25,16 @@ class TasksController < ApplicationController
   end
 
   def update
+    if @task.update(task_params)
+      redirect_to project_task_path(@project, @task)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @task.destroy
+    redirect_to project_tasks_path(@project)
   end
 
   private
