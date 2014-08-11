@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
-  before_action :find_meeting, only: [:show, :edit, :update, :destroy]
+  load_resource :project
+  load_resource :meeting, through: :project
 
   # Список совещания
   def index
@@ -18,10 +19,8 @@ class MeetingsController < ApplicationController
   # Создать совещание
   def create
     @meeting = current_user.owned_meetings.new(meeting_params)
-    logger.debug "New meeting: #{@meeting.attributes.inspect}"
-    logger.debug "Meeting should be valid: #{@meeting.valid?}"
     if @meeting.save
-      redirect_to meetings_path
+      redirect_to  project_meetings_path(@project)
     else
       render :new
     end
@@ -34,7 +33,7 @@ class MeetingsController < ApplicationController
   # Обновить совещание
   def update
     if @meeting.update(meeting_params)
-      redirect_to meeting_path
+      redirect_to project_meeting_path(@project, @meeting)
     else
       render :edit
     end
@@ -43,14 +42,10 @@ class MeetingsController < ApplicationController
   # Удалить совещание
   def destroy
     @meeting.destroy
-    redirect_to meetings_path
+    redirect_to project_meetings_path(@project)
   end
 
   private
-
-  def find_meeting
-    @meeting = Meeting.find(params[:id])
-  end
 
   def meeting_params
     params.require(:meeting).permit(:title, :description, :status, :project_id)

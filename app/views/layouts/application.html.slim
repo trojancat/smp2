@@ -28,8 +28,8 @@ html lang="ru"
           .container-fluid.nav-collapse
             ul.nav
               li= link_to "Проекты", projects_path
-              li= link_to "Задачи", "#tasks"
-              li= link_to "Совещания", meetings_path
+              li= link_to "Мои задачи", "#my_tasks"
+              li= link_to "Мои совещания", "#my_miitings"
             - if current_user
               ul.nav.pull-right
                 li= link_to "Выйти", destroy_user_session_path, method: 'DELETE'

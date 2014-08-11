@@ -22,7 +22,7 @@ h1 Задачи по проекту
           td.span2
             =link_to "Изменить", edit_project_task_path(@project, t)
             br
-            =link_to "Удалить", project_path(@project, t), method: :delete, data: { confirm: 'Уверены?' }
+            =link_to "Удалить", project_task_path(@project, t), method: :delete, data: { confirm: 'Уверены?' }
 
 .row
   = will_paginate @tasks, renderer: BootstrapPagination::Rails

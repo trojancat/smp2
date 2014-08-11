@@ -1,10 +1,9 @@
-h1 Совещания
-
+h1 Совещания по проекту
+= link_to @project.title, @project
 table.table.table-condensed
   thead
     tr
       th Тема
-      th Проект
       th Статус
       th Назначил
       th Создано
@@ -12,16 +11,15 @@ table.table.table-condensed
   tbody
     - @meetings.each do |m|
       tr
-        td = link_to m.title, meeting_path(m)
-        td = link_to m.project.title, project_path(m.project)
+        td = link_to m.title, project_meeting_path(@project, m)
         td = m.status
         td = m.owner.name
         td = m.created_at
         td.span2
-          =link_to "Изменить", edit_meeting_path(m)
+          =link_to "Изменить", edit_project_meeting_path(@project, m)
           ||
-          =link_to "Удалить", meeting_path(m), method: :delete, data: { confirm: 'Уверены?' }
+          =link_to "Удалить", project_meeting_path(@project, m), method: :delete, data: { confirm: 'Уверены?' }
 
-= link_to 'Назначить совещание', new_meeting_path, class: 'btn btn-success'
+= link_to 'Назначить совещание', new_project_meeting_path(@project), class: 'btn btn-success'
 
 = will_paginate @meetings, renderer: BootstrapPagination::Rails
