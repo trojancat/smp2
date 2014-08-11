@@ -69,19 +69,19 @@ describe MeetingsController do
 
         it 'redirects to index path' do
           post :create, meeting: FactoryGirl.attributes_for(:meeting, project_id: project.id)
-          expect(response).to redirect_to meetings_path
+          expect(response).to redirect_to project_meetings_path(project)
         end
       end
     end
 
     describe 'GET #edit' do
       it 'renders :edit view' do
-        get :edit, id: subject
+        get :edit, project_id: project.id, id: subject
         expect(response).to render_template :edit
       end
 
       it 'assigns the requested meeting to subject' do
-        get :edit, id: subject
+        get :edit, project_id: project.id, id: subject
         expect(assigns(:meeting)).to eq(subject)
       end
     end
@@ -90,13 +90,13 @@ describe MeetingsController do
       context 'with valid attributes' do
         it 'updates object' do
           expect{
-            post :update, id: subject, meeting: { title: 'new_meeting' }
+            post :update, project_id: project.id, id: subject, meeting: { title: 'new_meeting' }
           }.to change{ subject.reload.title }.to('new_meeting')
         end
 
         it 'redirects to index path' do
-          post :update, id: subject, meeting: { title: 'new_meeting' }
-          expect(response).to redirect_to meeting_path(subject)
+          post :update, project_id: project.id, id: subject, meeting: { title: 'new_meeting' }
+          expect(response).to redirect_to project_meeting_path(project, subject)
         end
       end
     end
@@ -106,13 +106,13 @@ describe MeetingsController do
 
       it 'deletes the object' do
         expect{
-          delete :destroy, id: @meeting
+          delete :destroy, project_id: project.id, id: @meeting
         }.to change(Meeting, :count).by(-1)
       end
 
       it 'redirects to index path' do
-        delete :destroy, id: @meeting
-        expect(response).to redirect_to meetings_path
+        delete :destroy, project_id: project.id, id: @meeting
+        expect(response).to redirect_to project_meetings_path(project)
       end
     end
 
