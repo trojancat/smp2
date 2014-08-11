@@ -19,6 +19,7 @@ class MeetingsController < ApplicationController
   # Создать совещание
   def create
     @meeting = current_user.owned_meetings.new(meeting_params)
+    @meeting.project_id = @project.id
     if @meeting.save
       redirect_to  project_meetings_path(@project)
     else
@@ -48,6 +49,6 @@ class MeetingsController < ApplicationController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:title, :description, :status, :project_id)
+    params.require(:meeting).permit(:title, :description, :status, :project_id, :owner_id)
   end
 end

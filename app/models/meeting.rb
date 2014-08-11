@@ -20,4 +20,5 @@ class Meeting < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: self.status.values }
 
   scope :page_by_page, ->(page) { includes(:owner, :project).paginate(:page => page, :per_page => self::PER_PAGE).order('created_at DESC') }
+
 end

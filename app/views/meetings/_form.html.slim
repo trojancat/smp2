@@ -1,5 +1,4 @@
 = simple_form_for [@project, @meeting] do |f|
-  = f.association :project, label: 'Проект', include_blank: false
   = f.input :title, label: 'Тема'
   = f.input :description, label: 'Описание'
   = f.input :status, label: 'Статус', include_blank: false
