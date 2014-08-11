@@ -4,9 +4,10 @@ describe MeetingsController do
 
   # Не авторизованный пользователь
   context 'when user not logged in' do
+    let(:project) { FactoryGirl.create(:project) }
     describe 'GET #index' do
       it 'redirects to login page' do
-        get :index
+        get :index, project_id: project.id
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -24,7 +25,7 @@ describe MeetingsController do
 
     describe 'GET #index' do
       it 'renders :index view' do
-        get :index
+        get :index, project_id: project.id
         expect(response).to render_template :index
       end
 
