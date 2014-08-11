@@ -63,12 +63,12 @@ describe MeetingsController do
       context 'with valid attributes' do
         it 'create new object' do
           expect{
-            post :create, meeting: FactoryGirl.attributes_for(:meeting, project_id: project.id)
+            post :create, project_id: project.id, meeting: FactoryGirl.attributes_for(:meeting)
           }.to change(Meeting, :count).by(1)
         end
 
         it 'redirects to index path' do
-          post :create, meeting: FactoryGirl.attributes_for(:meeting, project_id: project.id)
+          post :create, project_id: project.id, meeting: FactoryGirl.attributes_for(:meeting)
           expect(response).to redirect_to project_meetings_path(project)
         end
       end
