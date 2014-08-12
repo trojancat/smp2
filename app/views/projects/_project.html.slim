@@ -1,0 +1,11 @@
+tr
+  td = link_to project.title, project_path(project)
+  td = link_to '[ ' + project.tasks.count.to_s + ' ]', project_tasks_path(project)
+  td = link_to '[ ' + project.meetings.count.to_s + ' ]', project_meetings_path(project)
+  td = project.owner.name
+  td = project.status
+  td = project.created_at
+  td.span2
+    =link_to "Изменить", edit_project_path(project)
+    br
+    =link_to "Удалить", project_path(project), method: :delete, data: { confirm: 'Уверены?' }

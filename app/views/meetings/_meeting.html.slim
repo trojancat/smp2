@@ -1,0 +1,9 @@
+tr
+  td = link_to meeting.title, project_meeting_path(@project, meeting)
+  td = meeting.status
+  td = meeting.owner.name
+  td = meeting.created_at
+  td.span2
+    =link_to "Изменить", edit_project_meeting_path(@project, meeting)
+    ||
+    =link_to "Удалить", project_meeting_path(@project, meeting), method: :delete, data: { confirm: 'Уверены?' }

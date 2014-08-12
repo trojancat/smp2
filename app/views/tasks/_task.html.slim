@@ -1,0 +1,9 @@
+tr
+  td = link_to task.title, project_task_path(@project, task)
+  td = task.owner.name
+  td = task.status
+  td = task.created_at
+  td.span2
+    =link_to "Изменить", edit_project_task_path(@project, task)
+    br
+    =link_to "Удалить", project_task_path(@project, task), method: :delete, data: { confirm: 'Уверены?' }

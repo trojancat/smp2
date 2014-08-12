@@ -1,28 +1,16 @@
 h1 Задачи по проекту
 = link_to @project.title, @project
-.row
-  .col-lg-offset-11
-    = link_to 'Новая задача', new_project_task_path(@project), class: 'btn btn-success'
-.row
-  table.table.table-condensed
-    thead
-      tr
-        th Наименование
-        th Исполнитель
-        th Статус
-        th Создана
-        th &nbsp;
-    tbody
-      - @tasks.each do |t|
-        tr
-          td = link_to t.title, project_task_path(@project, t)
-          td = t.owner.name
-          td = t.status
-          td = t.created_at
-          td.span2
-            =link_to "Изменить", edit_project_task_path(@project, t)
-            br
-            =link_to "Удалить", project_task_path(@project, t), method: :delete, data: { confirm: 'Уверены?' }
 
-.row
-  = will_paginate @tasks, renderer: BootstrapPagination::Rails
+table.table.table-condensed
+  thead
+    tr
+      th Наименование
+      th Исполнитель
+      th Статус
+      th Создана
+      th &nbsp;
+  tbody
+    = render @tasks
+
+= link_to 'Новая задача', new_project_task_path(@project), class: 'btn btn-success'
+= will_paginate @tasks, renderer: BootstrapPagination::Rails
