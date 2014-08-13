@@ -4,13 +4,10 @@ Rails.application.routes.draw do
 
   resources :projects do
     get 'my', on: :collection
-
-    resources :tasks
-    resources :meetings
+    resources :tasks, :meetings
   end
 
   get 'my_tasks', to: 'tasks#my'
-  get 'my_meetings', to: 'meetings#my'
 
   root 'projects#index'
 end
