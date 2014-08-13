@@ -1,17 +1,25 @@
-h1 Проекты
+.row
+  .col-lg-12
+    h1.page-header Проекты
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        | Список проектов
+        = link_to '<i class="fa fa-plus"></i> Новый проект'.html_safe, new_project_path, class: 'btn btn-outline btn-success btn-xs pull-right'
+      .panel-body
+        .table-responsive
+          table.table
+            thead
+              tr
+                th Наименование
+                th Задачи
+                th Совещания
+                th Проект-менеджер
+                th Статус
+                th Создан
+                th &nbsp;
+            tbody
+              = render @projects
 
-table.table.table-condensed
-  thead
-    tr
-      th Наименование
-      th Задачи
-      th Совещания
-      th Проект-менеджер
-      th Статус
-      th Создан
-      th &nbsp;
-  tbody
-    = render @projects
-
-= link_to 'Новый проект', new_project_path, class: 'btn btn-success'
 = will_paginate @projects, renderer: BootstrapPagination::Rails

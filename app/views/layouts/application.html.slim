@@ -17,36 +17,70 @@ html lang="ru"
 
 
   body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+    #wrapper
+      /! Navigation
+      nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to 'SimplePM', root_path, class: 'brand'
-          .container-fluid.nav-collapse
-            ul.nav
+          = link_to 'SimplePM', root_path, class: 'navbar-brand'
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              i.fa.fa-envelope.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-messages
+              li
+                a href="#"
+                  div
+                    strong John Smith
+                    span.pull-right.text-muted
+                      em Yesterday
+                  div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+              li.divider
+              li
+                a href="#"
+                  div
+                    strong John Smith
+                    span.pull-right.text-muted
+                      em Yesterday
+                  div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+              li.divider
+              li
+                a href="#"
+                  div
+                    strong John Smith
+                    span.pull-right.text-muted
+                      em Yesterday
+                  div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+              li.divider
+              li
+                a.text-center href="#"
+                  strong Read All Messages
+                  i.fa.fa-angle-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li= link_to "<i class='fa fa-user fa-fw'></i> Профиль".html_safe, edit_user_registration_path
+              li.divider
+              li= link_to "<i class='fa fa-sign-out fa-fw'></i> Выйти".html_safe, destroy_user_session_path, method: 'DELETE'
+
+        / Sidebar
+        .navbar-default.sidebar role="navigation"
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
               li= link_to "Проекты", projects_path
               li= link_to "Мои задачи", "#my_tasks"
               li= link_to "Мои совещания", "#my_miitings"
-            - if current_user
-              ul.nav.pull-right
-                li= link_to "Выйти", destroy_user_session_path, method: 'DELETE'
-
-    .container-fluid
-
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            ul.nav.nav-list
-              li.nav-header Меню пользователя
-              li= link_to "Пользователи", '#users'
-              li= link_to "Сообщения", '#messages'
-              li= link_to "Профиль", edit_user_registration_path
-        .span9
-          = bootstrap_flash
-          = yield
-    
-      footer
-        p &copy; SimplePM 2014
+      /! Page Content
+      #page-wrapper
+        .row
+          .col-lg-12
+            /h1.page-header Blank
+            = bootstrap_flash
+            = yield
