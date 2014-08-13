@@ -12,7 +12,7 @@ $.rails.confirmed = (link) ->
 $.rails.showConfirmDialog = (link) ->
   message = link.attr 'data-confirm'
   html = """
-    <div class="modal fade" id="confirmationDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -22,7 +22,7 @@ $.rails.showConfirmDialog = (link) ->
                 <div class="modal-body"><div class="te">#{message}</div></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                    <button type="button" class="btn btn-primary confirm" data-dismiss="modal">Да</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
                 </div>
             </div>
         </div>
