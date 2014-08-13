@@ -19,6 +19,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 group :production do
   gem 'rails_12factor'

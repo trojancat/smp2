@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/ifad/data-confirm-modal.git
+  revision: 81d140fe51e70771821ae0434a32dacf69ca5292
+  specs:
+    data-confirm-modal (1.0.1)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 1d93c5a77049b3d21d17c847ad0531d7714fa229
   branch: bootstrap3
@@ -217,6 +224,7 @@ DEPENDENCIES
   binding_of_caller
   cancancan (~> 1.9)
   carrierwave
+  data-confirm-modal!
   database_cleaner
   devise
   enumerize
