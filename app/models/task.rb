@@ -1,5 +1,8 @@
 class Task < ActiveRecord::Base
 
+  OPENED = 1;   # Открыта
+  CLOSED = 2;   # Закрыта
+
   PER_PAGE = 10 # Элементов на странице при постраничном выводе
 
   belongs_to :project
@@ -8,8 +11,8 @@ class Task < ActiveRecord::Base
   # Статусы
   extend Enumerize
   enumerize :status, in: {
-      'открыта' => 1,
-      'закрыта' => 2,
+      'открыта' => self::OPENED,
+      'закрыта' => self::CLOSED,
   }
 
   # Валидация

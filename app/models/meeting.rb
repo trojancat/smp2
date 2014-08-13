@@ -1,5 +1,8 @@
 class Meeting < ActiveRecord::Base
 
+  OPENED = 1;   # Открыт
+  CLOSED = 2;   # Закрыт
+
   PER_PAGE = 10 # Элементов на странице при постраничном выводе
 
   belongs_to              :owner, class_name: User
@@ -9,8 +12,8 @@ class Meeting < ActiveRecord::Base
   # Статусы
   extend Enumerize
   enumerize :status, in: {
-      'открыт' => 1,
-      'закрыт' => 2,
+      'открыт' => self::OPENED,
+      'закрыт' => self::CLOSED,
   }
 
   # Валидация

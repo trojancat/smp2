@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects do
+    get 'my', on: :collection
+
     resources :tasks
     resources :meetings
   end

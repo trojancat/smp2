@@ -6,6 +6,12 @@ class ProjectsController < ApplicationController
     @projects = Project.page_by_page(params[:page])
   end
 
+  # Мои проекты
+  def my
+    @projects = Project.by_user(current_user).page_by_page(params[:page])
+    render :index
+  end
+
   # Страница проекта
   def show
   end
