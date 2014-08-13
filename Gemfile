@@ -15,7 +15,7 @@ gem 'simple_form'
 gem 'enumerize'
 gem 'state_machine'
 gem 'carrierwave'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => "bootstrap3"
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
