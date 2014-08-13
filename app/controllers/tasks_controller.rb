@@ -1,9 +1,15 @@
 class TasksController < ApplicationController
-  load_resource :project
-  load_resource :task, through: :project
+  load_resource :project, except: [:my]
+  load_resource :task, through: :project, except: [:my]
 
   def index
     @tasks = Task.page_by_page(params[:page])
+  end
+
+  # Мои задачи
+  def my
+    @tasks = Task.by_user(current_user).page_by_page(params[:page])
+    render :index
   end
 
   def show

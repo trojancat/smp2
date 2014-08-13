@@ -1,13 +1,15 @@
 .row
   .col-lg-12
-    h1.page-header Задачи по проекту:
-    h2 = link_to @project.title, @project
+    h1.page-header Задачи
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading
-          | Список задач
-          = link_to '<i class="fa fa-plus-square"></i> Новая задача'.html_safe, new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+          - unless action_name == 'my'
+            = link_to 'Задачи по проекту' + @project.title, @project
+            = link_to '<i class="fa fa-plus-square"></i> Новая задача'.html_safe, new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+          - else
+            | Мои задачи
         .panel-body
           .table-responsive
             table.table
