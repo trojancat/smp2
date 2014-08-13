@@ -1,16 +1,24 @@
-h1 Совещания по проекту
-= link_to @project.title, @project
+.row
+  .col-lg-12
+    h1.page-header Совещания по проекту:
+    h2 = link_to @project.title, @project
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          | Список задач
+          = link_to '<i class="fa fa-plus-square"></i> Назначить совещание'.html_safe, new_project_meeting_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+        .panel-body
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Тема
+                  th Статус
+                  th Назначил
+                  th Создано
+                  th &nbsp;
+              tbody
+                = render @meetings
 
-table.table.table-condensed
-  thead
-    tr
-      th Тема
-      th Статус
-      th Назначил
-      th Создано
-      th &nbsp;
-  tbody
-    = render @meetings
-
-= link_to 'Назначить совещание', new_project_meeting_path(@project), class: 'btn btn-success'
-= will_paginate @meetings, renderer: BootstrapPagination::Rails
+  = will_paginate @meetings, renderer: BootstrapPagination::Rails

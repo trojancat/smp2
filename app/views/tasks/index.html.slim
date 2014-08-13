@@ -1,16 +1,24 @@
-h1 Задачи по проекту
-= link_to @project.title, @project
+.row
+  .col-lg-12
+    h1.page-header Задачи по проекту:
+    h2 = link_to @project.title, @project
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          | Список задач
+          = link_to '<i class="fa fa-plus-square"></i> Новая задача'.html_safe, new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+        .panel-body
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Наименование
+                  th Исполнитель
+                  th Статус
+                  th Создана
+                  th &nbsp;
+              tbody
+                = render @tasks
 
-table.table.table-condensed
-  thead
-    tr
-      th Наименование
-      th Исполнитель
-      th Статус
-      th Создана
-      th &nbsp;
-  tbody
-    = render @tasks
-
-= link_to 'Новая задача', new_project_task_path(@project), class: 'btn btn-success'
-= will_paginate @tasks, renderer: BootstrapPagination::Rails
+  = will_paginate @tasks, renderer: BootstrapPagination::Rails

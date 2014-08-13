@@ -6,6 +6,5 @@ tr
   td = project.status
   td = project.created_at
   td.span2
-    =link_to "Изменить", edit_project_path(project)
-    br
-    =link_to "Удалить", project_path(project), method: :delete, data: { confirm: 'Remove entry?' }
+    =link_to "<i class='fa fa-pencil-square-o'></i>".html_safe, edit_project_path(project), class: 'btn', title: 'edit'
+    =link_to "<i class='fa fa-minus-square'></i>".html_safe, project_path(project), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
