@@ -1,9 +1,15 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
+  load_resource :project
 
   # Список проектов
   def index
-    @projects = Project.includes(:owner).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @projects = Project.page_by_page(params[:page])
+  end
+
+  # Мои проекты
+  def my
+    @projects = Project.by_user(current_user).page_by_page(params[:page])
+    render :index
   end
 
   # Страница проекта
@@ -25,7 +31,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Ищзменить проект
+  # Изменить проект
   def edit
   end
 
@@ -45,10 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-  def find_project
-    @project = Project.find(params[:id])
-  end
 
   def project_params
     params.require(:project).permit(:title, :description, :status)

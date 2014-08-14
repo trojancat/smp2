@@ -13,6 +13,7 @@ h2
     = f.input :current_password, label: 'Текущий пароль', hint: "Укажите текущий пароль, чтобы подтвердить изменения", required: true
     a[href="#" data-toggle="collapse" data-target="#change-password"]
       | Сменить пароль
+    br
     #change-password.collapse.out
       = f.input :password, label: 'Новый пароль', hint: 'Оставьте пустым, если не собираетесь его менять!', autocomplete: "off", required: false
       = f.input :password_confirmation, label: 'Подтверждение нового пароля', required: false

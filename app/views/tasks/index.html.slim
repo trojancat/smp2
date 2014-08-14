@@ -1,0 +1,28 @@
+.row
+  .col-lg-12
+    h1.page-header Задачи
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          - unless action_name == 'my'
+            = link_to "Задачи по проекту #{@project.title}", @project
+            = link_to new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+              i.fa.fa-plus-square
+              | Новая задача
+          - else
+            | Мои задачи
+        .panel-body
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Наименование
+                  th Исполнитель
+                  th Статус
+                  th Создана
+                  th &nbsp;
+              tbody
+                = render @tasks
+
+  = will_paginate @tasks, renderer: BootstrapPagination::Rails

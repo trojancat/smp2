@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  TECH_DIR = 1  #Технический директор
-  PM = 2        #Проект менеджер
-  MEMBER = 3    #Рядовой сотрудник
+  TECH_DIR = 1      # Технический директор
+  PM = 2            # Проект менеджер
+  MEMBER = 3        # Рядовой сотрудник
 
   # Фильтры
   before_create :set_default_role
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   enumerize :role, in: {
       'Технический директор' => self::TECH_DIR,
       'Проект менеджер' => self::PM,
-      'Рядовой сотрудник' => self::MEMBER
+      'Рядовой сотрудник' => self::MEMBER,
   }
 
   private

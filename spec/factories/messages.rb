@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :message do
     title { Faker::Lorem.characters(rand(4..30)) }
     body { Faker::Lorem.paragraph }
-    status 1
+    status 'новое'
 
     association :sender, factory: :user
     association :acceptor, factory: :user

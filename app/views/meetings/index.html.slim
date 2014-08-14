@@ -1,0 +1,25 @@
+.row
+  .col-lg-12
+    h1.page-header Совещания
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          = link_to "Совещания по проекту #{@project.title}", @project
+          = link_to new_project_meeting_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+            i.fa.fa-plus-square
+            | Назначить совещание
+        .panel-body
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Тема
+                  th Статус
+                  th Назначил
+                  th Создано
+                  th &nbsp;
+              tbody
+                = render @meetings
+
+  = will_paginate @meetings, renderer: BootstrapPagination::Rails

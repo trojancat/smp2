@@ -1,0 +1,9 @@
+h1 Проект:
+= link_to @project.title, project_path(@project)
+h2 Тема совещания:
+= @meeting.title
+h3 Описание:
+= @meeting.description
+p = 'Статус: ' + @meeting.status
+p
+  = link_to 'К списку совещаний', project_meetings_path(@project), class: 'btn btn-info'

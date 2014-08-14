@@ -1,5 +1,14 @@
-= simple_form_for @project do |f|
-  = f.input :title, label: 'Наименование'
-  = f.input :description, label: 'Описание'
-  = f.input :status, label: 'Статус'
-  = f.button :submit, value: 'Сохранить', class: 'btn btn-primary'
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        | Данные проекта
+      .panel-body
+        .row
+          .col-lg-6
+            = simple_form_for @project, role: 'form' do |f|
+              = f.input :title, label: 'Наименование'
+              = f.input :description, label: 'Описание', input_html: { rows: 10 }
+              = f.input :status, label: 'Статус', include_blank: false
+              = link_to 'Отмена', projects_path, class: 'btn'
+              = f.button :submit, value: 'Сохранить', class: 'btn btn-primary'

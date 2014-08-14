@@ -15,10 +15,11 @@ gem 'simple_form'
 gem 'enumerize'
 gem 'state_machine'
 gem 'carrierwave'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => "bootstrap3"
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 group :production do
   gem 'rails_12factor'
@@ -35,6 +36,8 @@ end
 
 group :development do
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

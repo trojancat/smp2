@@ -11,46 +11,40 @@ html lang="ru"
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
-    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
-    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
-    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-
-
   body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          = link_to 'SimplePM', root_path, class: 'brand'
-          .container-fluid.nav-collapse
-            ul.nav
-              li= link_to "Проекты", projects_path
-              li= link_to "Задачи", "#tasks"
-              li= link_to "Совещания", "#meetings"
-            - if current_user
-              ul.nav.pull-right
-                li= link_to "Выйти", destroy_user_session_path, method: 'DELETE'
+    #wrapper
+      /! Navigation
+      nav.navbar.navbar-default.navbar-static-top role="navigation"
+        .navbar-header
+          = link_to 'SimplePM', root_path, class: 'navbar-brand'
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              i.fa.fa-user.fa-fw
+              span.user-name
+                = current_user.name ||= current_user.email
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li= link_to edit_user_registration_path
+                i.fa.fa-user.fa-fw
+                | Профиль
+              li.divider
+              li= link_to destroy_user_session_path, method: 'DELETE'
+                i.fa.fa-sign-out.fa-fw
+                | Выйти
 
-    .container-fluid
-
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            ul.nav.nav-list
-              li.nav-header Меню пользователя
-              li= link_to "Пользователи", '#users'
-              li= link_to "Сообщения", '#messages'
-              li= link_to "Профиль", edit_user_registration_path
-        .span9
-          = bootstrap_flash
-          = yield
-    
-      footer
-        p &copy; SimplePM 2014
+        /! Sidebar
+        .navbar-default.sidebar role="navigation"
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li= link_to "Мои проекты", my_projects_path
+              li= link_to "Мои задачи", my_tasks_path
+      /! Page Content
+      #page-wrapper
+        .row
+          .col-lg-12
+            = bootstrap_flash
+            = yield

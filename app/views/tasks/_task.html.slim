@@ -1,0 +1,10 @@
+tr
+  td = link_to task.title, project_task_path(task.project, task)
+  td = task.owner.name
+  td = task.status
+  td = task.created_at
+  td.span2
+    =link_to edit_project_task_path(task.project, task), class: 'btn', title: 'edit'
+      i.fa.fa-pencil-square-o
+    =link_to project_task_path(task.project, task), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
+      i.fa.fa-minus-square

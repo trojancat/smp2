@@ -1,27 +1,28 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
+ *= require bootstrap.min
+ *= require plugins/metisMenu/metisMenu.min.css
+ *= require spm2-theme
+ *= require font-awesome.min
  *= require_self
+ *= require_tree .
  */
 
-#content {
-    padding-top: 60px;
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../assets/glyphicons-halflings-regular.eot');
+    src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+    url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../assets/fontawesome-webfont.eot?v=4.1.0');
+    src: url('../assets/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+    url('../assets/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+    url('../assets/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+    url('../assets/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
