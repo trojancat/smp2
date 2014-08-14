@@ -4,5 +4,7 @@ tr
   td = task.status
   td = task.created_at
   td.span2
-    =link_to "<i class='fa fa-pencil-square-o'></i>".html_safe, edit_project_task_path(task.project, task), class: 'btn', title: 'edit'
-    =link_to "<i class='fa fa-minus-square'></i>".html_safe, project_task_path(task.project, task), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
+    =link_to edit_project_task_path(task.project, task), class: 'btn', title: 'edit'
+      i.fa.fa-pencil-square-o
+    =link_to project_task_path(task.project, task), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
+      i.fa.fa-minus-square

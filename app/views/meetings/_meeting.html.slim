@@ -4,5 +4,7 @@ tr
   td = meeting.owner.name
   td = meeting.created_at
   td.span2
-    =link_to "<i class='fa fa-pencil-square-o'></i>".html_safe, edit_project_meeting_path(@project, meeting), class: 'btn', title: 'edit'
-    =link_to "<i class='fa fa-minus-square'></i>".html_safe, project_meeting_path(@project, meeting), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
+    =link_to edit_project_meeting_path(@project, meeting), class: 'btn', title: 'edit'
+      i.fa.fa-pencil-square-o
+    =link_to project_meeting_path(@project, meeting), class: 'btn', title: 'remove', method: :delete, data: { confirm: 'Remove entry?' }
+      i.fa.fa-minus-square

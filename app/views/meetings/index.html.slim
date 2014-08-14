@@ -1,13 +1,14 @@
 .row
   .col-lg-12
-    h1.page-header Совещания по проекту:
-    h2 = link_to @project.title, @project
+    h1.page-header Совещания
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading
-          | Список задач
-          = link_to '<i class="fa fa-plus-square"></i> Назначить совещание'.html_safe, new_project_meeting_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+          = link_to "Совещания по проекту #{@project.title}", @project
+          = link_to new_project_meeting_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+            i.fa.fa-plus-square
+            | Назначить совещание
         .panel-body
           .table-responsive
             table.table

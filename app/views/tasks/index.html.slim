@@ -6,8 +6,10 @@
       .panel.panel-default
         .panel-heading
           - unless action_name == 'my'
-            = link_to 'Задачи по проекту' + @project.title, @project
-            = link_to '<i class="fa fa-plus-square"></i> Новая задача'.html_safe, new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+            = link_to "Задачи по проекту #{@project.title}", @project
+            = link_to new_project_task_path(@project), class: 'btn btn-outline btn-success btn-xs pull-right'
+              i.fa.fa-plus-square
+              | Новая задача
           - else
             | Мои задачи
         .panel-body

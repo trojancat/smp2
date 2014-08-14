@@ -347,3 +347,7 @@ table.dataTable thead .sorting:after {
 nav.navbar.navbar-default.navbar-static-top {
     margin-bottom: 0;
 }
+
+a.btn i {
+    margin-right: 5px;
+}
