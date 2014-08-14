@@ -22,5 +22,6 @@ class Task < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: self.status.values }
 
   scope :page_by_page, ->(page) { includes(:owner).paginate(:page => page, :per_page => self::PER_PAGE).order('created_at DESC') }
+  scope :by_project, ->(project) { where(project_id: project) }
   scope :by_user, ->(user) { where(owner_id: user) }
 end

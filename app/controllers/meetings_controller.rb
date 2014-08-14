@@ -2,9 +2,9 @@ class MeetingsController < ApplicationController
   load_resource :project
   load_resource :meeting, through: :project
 
-  # Список совещания
+  # Список совещаний
   def index
-    @meetings = Meeting.page_by_page(params[:page])
+    @meetings = Meeting.by_project(@project).page_by_page(params[:page])
   end
 
   # Страница совещания

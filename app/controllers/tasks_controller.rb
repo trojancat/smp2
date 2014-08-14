@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   load_resource :task, through: :project, except: [:my]
 
   def index
-    @tasks = Task.page_by_page(params[:page])
+    @tasks = Task.by_project(@project).page_by_page(params[:page])
   end
 
   # Мои задачи
