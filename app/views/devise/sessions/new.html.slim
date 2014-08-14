@@ -10,3 +10,5 @@
           .form-group
             = f.password_field :password, class: 'form-control', label: 'Пароль', placeholder: "Пароль", required: true
           button.btn.btn-lg.btn-success.btn-block type='submit' Войти
+    .panel-footer
+      = render "devise/shared/links"
