@@ -24,6 +24,8 @@ html lang="ru"
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#"
               i.fa.fa-user.fa-fw
+              span.user-name
+                = current_user.name ||= current_user.email
               i.fa.fa-caret-down
             ul.dropdown-menu.dropdown-user
               li= link_to "<i class='fa fa-user fa-fw'></i> Профиль".html_safe, edit_user_registration_path
