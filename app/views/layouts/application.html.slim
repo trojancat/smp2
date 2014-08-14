@@ -28,11 +28,15 @@ html lang="ru"
                 = current_user.name ||= current_user.email
               i.fa.fa-caret-down
             ul.dropdown-menu.dropdown-user
-              li= link_to "<i class='fa fa-user fa-fw'></i> Профиль".html_safe, edit_user_registration_path
+              li= link_to edit_user_registration_path
+                i.fa.fa-user.fa-fw
+                | Профиль
               li.divider
-              li= link_to "<i class='fa fa-sign-out fa-fw'></i> Выйти".html_safe, destroy_user_session_path, method: 'DELETE'
+              li= link_to destroy_user_session_path, method: 'DELETE'
+                i.fa.fa-sign-out.fa-fw
+                | Выйти
 
-        / Sidebar
+        /! Sidebar
         .navbar-default.sidebar role="navigation"
           .sidebar-nav.navbar-collapse
             ul#side-menu.nav
